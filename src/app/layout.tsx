@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "CVSmart",
-  description: "AI Resume Builder",
+  description: "Resume Builder",
 };
 
 export default function RootLayout({
