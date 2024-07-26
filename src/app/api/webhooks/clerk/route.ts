@@ -48,8 +48,8 @@ export async function POST(req: Request) {
             email:result.data.email_addresses[0].email_address,
             id:result.data.id,
             image:result.data.image_url,
-            firstName:result.data.first_name,
-            lastName:result.data.last_name, 
+            firstName:result.data.first_name!,
+            lastName:result.data.last_name!, 
           }
         }) 
         break;
@@ -61,8 +61,8 @@ export async function POST(req: Request) {
           },data:{
             email:result.data.email_addresses[0].email_address,
             image:result.data.image_url,
-            firstName:result.data.first_name,
-            lastName:result.data.last_name, 
+            firstName:result.data.first_name!,
+            lastName:result.data.last_name!, 
           } 
           
         })
