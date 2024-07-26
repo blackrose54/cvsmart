@@ -24,7 +24,7 @@ export default async function Dashboard() {
       <div className=" space-y-4">
         <h1 className=" font-bold text-4xl md:text-6xl">My Resume</h1>
         <p className=" text-muted-foreground">
-          Start & Explore AI Resume builder, Create Resume with AI
+          Start & Explore Resume builder
         </p>
       </div>
 
