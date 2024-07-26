@@ -11,20 +11,25 @@ import Link from "next/link";
 const words = [
   {
     text: "Build",
+    className: "text-white",
   },
   {
     text: "your",
+    className: "text-white",
   },
 
   {
     text: "Resume",
+    className: "text-white",
   },
   {
     text: "in",
+    className: "text-white",
   },
 
   {
     text: "Minutes",
+    className: "text-white",
   },
   {
     text: "CVSmart.",
