@@ -159,7 +159,7 @@ export default function ProjectForm(details: ProjectFormProps) {
           />
 
           <div className=" w-full flex justify-between">
-            <div className=" space-x-4">
+            <div className=" flex-col flex gap-y-2 sm:flex-row sm:gap-x-4">
               <Button className=" space-x-2" onClick={() => details.edit(-1)}>
                 <Plus size={20} />
                 <p>Add</p>

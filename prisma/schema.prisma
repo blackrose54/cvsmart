@@ -109,7 +109,7 @@ model Skills {
   resumeId String
   resume   Resume? @relation(fields: [resumeId], references: [id])
 
-  name String    @unique
+  name String    
   type SkillType
 
   @@index([resumeId])

@@ -38,7 +38,7 @@ const Page: FC<pageProps> = (): ReactElement => {
   const [currentForm, setCurrentForm] = useState(0);
 
   useEffect(() => {
-    if (currentForm >= formseq.length - 1) {
+    if (currentForm > formseq.length - 1) {
       setCurrentForm(0);
       router.push(`/dashboard/resume/preview/${id}`);
     }
@@ -67,9 +67,9 @@ const Page: FC<pageProps> = (): ReactElement => {
           <Button
             className=" space-x-2"
             onClick={() => setCurrentForm((prev) => prev + 1)}
-            disabled={currentForm >= formseq.length - 1}
+            disabled={currentForm > formseq.length - 1}
           >
-            {currentForm < formseq.length - 1 ? (
+            {currentForm <= formseq.length - 1 ? (
               <>
                 {" "}
                 <p>Next</p>
