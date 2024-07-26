@@ -115,7 +115,7 @@ export default function ExperienceForm(details: EducationFormProps) {
             )}
           />
 
-          <div className=" flex items-center justify-between">
+          <div className=" flex items-center justify-between max-sm:flex-col max-sm:gap-y-4">
             <FormField
               control={form.control}
               name="startDate"
