@@ -2,8 +2,9 @@
 
 import prisma from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
+import { Template } from "@prisma/client";
 
-export async function createResume(title: string) {
+export async function createResume(title: string,template:Template) {
   const { userId } = auth();
   if (!userId) return null;
 
@@ -16,6 +17,7 @@ export async function createResume(title: string) {
       data: {
         title,
         userId,
+        template
       },
     });
 

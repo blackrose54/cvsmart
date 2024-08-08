@@ -8,6 +8,7 @@ export const ResmueSchema = z.object({
   phone: z.string(),
   address: z.string().optional(),
   jobtitle: z.string().optional(),
+  rollNo: z.string().optional(),
   summary: z.string().optional(),
   github: z.string().optional(),
   linkedin: z.string().optional(),
@@ -62,4 +63,11 @@ export const ExtraCarricularSchema = z.object({
   id:z.number().optional(),
   resumeId: z.string(),
   activity: z.string(),
+});
+
+export const PositionsSchema = z.object({
+  id:z.number().optional(),
+  resumeId: z.string(),
+  position: z.string(),
+  description: z.string().optional(),
 });

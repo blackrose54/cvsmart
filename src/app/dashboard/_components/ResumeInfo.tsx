@@ -8,6 +8,7 @@ import {
   ExtraCarricular,
   Projects,
   Skills,
+  Positions,
 } from "@prisma/client";
 import { createContext, ReactNode, useContext } from "react";
 
@@ -19,6 +20,7 @@ export type ResumeData =(Resume & {
   AcademicAchievements: AcademicAchievements[];
   Projects: Projects[];
   ExtraCarricular: ExtraCarricular[];
+  Positions:Positions[]
 }) | null;
 
 const ResumeInfoContext = createContext<ResumeData>(null);

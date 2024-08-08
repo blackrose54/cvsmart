@@ -13,6 +13,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum SkillType {
+  Framework
+  Tools
+  Language
+}
+
+enum Template {
+  Jakes
+  DTU
+}
+
 model User {
   id        String @id
   email     String @unique
@@ -41,6 +52,9 @@ model Resume {
   summary    String?
   github     String?
   linkedin   String?
+  rollNo     String?
+
+  template Template @default(Jakes)
 
   userId String
   user   User?  @relation(fields: [userId], references: [id])
@@ -54,6 +68,7 @@ model Resume {
   Projects             Projects[]
   AcademicAchievements AcademicAchievements[]
   ExtraCarricular      ExtraCarricular[]
+  Positions            Positions[]
 
   @@unique([userId, title])
 }
@@ -97,11 +112,6 @@ model Education {
   @@index([resumeId])
 }
 
-enum SkillType {
-  Framework
-  Tools
-  Language
-}
 
 model Skills {
   id Int @id @default(autoincrement())
@@ -109,7 +119,7 @@ model Skills {
   resumeId String
   resume   Resume? @relation(fields: [resumeId], references: [id])
 
-  name String    
+  name String
   type SkillType
 
   @@index([resumeId])
@@ -155,6 +165,21 @@ model ExtraCarricular {
   resume   Resume? @relation(fields: [resumeId], references: [id])
 
   activity String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([resumeId])
+}
+
+model Positions {
+  id Int @id @default(autoincrement())
+
+  resumeId String
+  resume   Resume? @relation(fields: [resumeId], references: [id])
+
+  position    String
+  description String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -29,6 +29,7 @@ export default async function ResumeLayout({
       Projects: true,
       Skills: true,
       ExtraCarricular: true,
+      Positions: true,
     },
   });
 

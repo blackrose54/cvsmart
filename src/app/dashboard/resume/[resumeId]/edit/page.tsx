@@ -10,19 +10,19 @@ import Achievement from "../../_components/Achievements";
 import Education from "../../_components/Education";
 import Experience from "../../_components/Experience";
 import ExtraCarricular from "../../_components/Extracarricular";
-import Preview from "../../_components/Preview";
+import PersonalDetails from "../../_components/forms/personalform";
+import Positions from "../../_components/Position";
+import PreviewJake from "../../_components/previews/Preview";
 import Projects from "../../_components/Projects";
 import Skills from "../../_components/Skills";
-import PersonalDetails from "../../_components/forms/personalform";
+import PreviewDTU from "../../_components/dtupreview/Preview";
 
-interface pageProps {
-  
-}
+interface pageProps {}
 
 const Page: FC<pageProps> = (): ReactElement => {
   const data = useResumeInfo();
 
-  const id = data?.id
+  const id = data?.id;
 
   const formseq = [
     "personal",
@@ -32,6 +32,7 @@ const Page: FC<pageProps> = (): ReactElement => {
     "skills",
     "achievements",
     "extracarricular",
+    "position",
   ];
 
   const router = useRouter();
@@ -64,21 +65,26 @@ const Page: FC<pageProps> = (): ReactElement => {
               <p>Back</p>
             </Button>
           </div>
-          <Button
-            className=" space-x-2"
-            onClick={() => setCurrentForm((prev) => prev + 1)}
-            disabled={currentForm > formseq.length - 1}
-          >
-            {currentForm <= formseq.length - 1 ? (
-              <>
-                {" "}
-                <p>Next</p>
-                <ArrowRight size={20} />
-              </>
-            ) : (
-              <Loader2 size={20} className=" animate-spin" />
-            )}
-          </Button>
+          <div className=" space-x-4">
+            <Link href={`/dashboard/resume/preview/${id}`}>
+              <Button variant={'ghost'}>Preview</Button>
+            </Link>
+            <Button
+              className=" space-x-2"
+              onClick={() => setCurrentForm((prev) => prev + 1)}
+              disabled={currentForm > formseq.length - 1}
+            >
+              {currentForm <= formseq.length - 1 ? (
+                <>
+                  {" "}
+                  <p>Next</p>
+                  <ArrowRight size={20} />
+                </>
+              ) : (
+                <Loader2 size={20} className=" animate-spin" />
+              )}
+            </Button>
+          </div>
         </div>
         <div className="">
           {formseq[currentForm] === "personal" && (
@@ -96,10 +102,12 @@ const Page: FC<pageProps> = (): ReactElement => {
           {formseq[currentForm] === "extracarricular" && (
             <ExtraCarricular details={data} />
           )}
+
+          {data?.template == 'DTU' && formseq[currentForm] === "position" && <Positions details={data} />}
         </div>
       </div>
       <div className=" h-full border-2 rounded-md ">
-        <Preview resumeInfo={data} />
+        {data?.template == 'Jakes' ? <PreviewJake resumeInfo={data} />:<PreviewDTU resumeInfo={data} />}
       </div>
     </main>
   );

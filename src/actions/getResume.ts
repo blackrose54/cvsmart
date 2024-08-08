@@ -14,6 +14,7 @@ export async function getResume(id: string) {
       ExtraCarricular: true,
       Projects: true,
       Skills: true,
+      Positions:true
     },
   });
 

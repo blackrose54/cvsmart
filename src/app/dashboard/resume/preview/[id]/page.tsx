@@ -1,11 +1,12 @@
 "use client";
 
-import { ResumeData, useResumeInfo } from "@/app/dashboard/_components/ResumeInfo";
+import { getResume } from "@/actions/getResume";
+import { ResumeData } from "@/app/dashboard/_components/ResumeInfo";
 import { Button } from "@/components/ui/button";
 import { FC, ReactElement, useEffect, useState } from "react";
-import Preview from "../../_components/Preview";
 import { RWebShare } from "react-web-share";
-import { getResume } from "@/actions/getResume";
+import PreviewJake from "../../_components/previews/Preview";
+import PreviewDTU from "../../_components/dtupreview/Preview";
 
 interface pageProps {
   params:{id:string}
@@ -50,7 +51,7 @@ const Page: FC<pageProps> = ({params:{id}}): ReactElement => {
       <div className=" shadow-lg border-2 w-fit mx-auto mb-4">
         
         <div className=" h-[1123px] w-[794px] mx-auto" id="print-area">
-          <Preview resumeInfo={data} />
+          {data?.template == 'Jakes' ? <PreviewJake resumeInfo={data} />:<PreviewDTU resumeInfo={data} />}
         </div>
       </div>
     </>

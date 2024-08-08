@@ -21,15 +21,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import {
   BtnBold,
   BtnBulletList,
-  BtnClearFormatting,
   BtnItalic,
   BtnLink,
-  BtnNumberedList,
   BtnUnderline,
   Editor,
   EditorProvider,
   Separator,
-  Toolbar,
+  Toolbar
 } from "react-simple-wysiwyg";
 
 import { useForm } from "react-hook-form";

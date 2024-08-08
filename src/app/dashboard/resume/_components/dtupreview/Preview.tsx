@@ -1,18 +1,19 @@
 import React from "react";
-import PersonalPreview from "./previews/PersonalPreview";
+import PersonalPreview from "./PersonalPreview";
 import { ResumeData } from "@/app/dashboard/_components/ResumeInfo";
 import { Noto_Serif, IBM_Plex_Serif } from "next/font/google";
 import { cn } from "@/lib/utils";
-import EducationPreview from "./previews/EducationPreview";
-import ExperiencePreview from "./previews/ExperiencePreview";
-import ProjectPreview from "./previews/ProjectPreview";
-import SkillPreview from "./previews/SkillPreview";
-import AchievementPreview from "./previews/AchievementPreview";
-import ExtraCarricularPreview from "./previews/ExtraCarricularPreview";
+import EducationPreview from "./EducationPreview";
+import ExperiencePreview from "./ExperiencePreview";
+import ProjectPreview from "./ProjectPreview";
+import SkillPreview from "./SkillPreview";
+import AchievementPreview from "./AchievementPreview";
+import ExtraCarricularPreview from "./ExtraCarricularPreview";
+import PositionOfResponsibilityPreview from "./PositionOfResposibiltyPreview";
 
 const noto = Noto_Serif({ subsets: ["latin"] });
 
-function Preview({ resumeInfo }: { resumeInfo: ResumeData }) {
+function PreviewDTU({ resumeInfo }: { resumeInfo: ResumeData }) {
   return (
     <div
       className={cn(
@@ -29,6 +30,7 @@ function Preview({ resumeInfo }: { resumeInfo: ResumeData }) {
           email={resumeInfo?.email}
           linkedin={resumeInfo?.linkedin}
           github={resumeInfo?.github}
+          rollNo={resumeInfo?.rollNo}
         />
       )}
       {/* Education */}
@@ -56,8 +58,13 @@ function Preview({ resumeInfo }: { resumeInfo: ResumeData }) {
       {resumeInfo?.ExtraCarricular && resumeInfo.ExtraCarricular.length > 0 && (
         <ExtraCarricularPreview extra={resumeInfo?.ExtraCarricular} />
       )}
+      
+      {/* Positions of Responsibility */}
+      {resumeInfo?.Positions && resumeInfo.Positions.length > 0 && (
+        <PositionOfResponsibilityPreview  positions={resumeInfo?.Positions} />
+      )}
     </div>
   );
 }
 
-export default Preview;
+export default PreviewDTU;
